@@ -1,0 +1,56 @@
+---
+    - name: MariaDB
+      hosts: dbservers
+      gather_facts: true
+      become: true
+      vars:
+        mysql_root_password: "cisco"
+      tasks:
+        - name: Set Hostname
+          hostname:
+            name: Database-{{groups['dbservers'].index(inventory_hostname)}}
+        - name: install mariadb
+          apt:
+            name:
+              - mariadb-server
+              - python3-mysqldb
+            state: latest
+        - name: Configure bind-address
+          become: true
+          lineinfile:
+            path: /etc/mysql/my.cnf
+            line: |
+              [mysqld]
+              bind-address=0.0.0.0
+            insertbefore: EOF
+        - name: start mariadb
+          service:
+            name: mariadb
+            enabled: true
+            state: restarted
+        - name: mysql_root_password
+          mysql_user:
+            login_user: root
+            login_password: "{{ mysql_root_password }}"
+            user: root
+            check_implicit_admin: true
+            password: "{{ mysql_root_password }}"
+            host: localhost
+        - name: Create a new database called opencart
+          mysql_db:
+            login_user: root
+            login_password: "{{ mysql_root_password }}"
+            name: opencart
+            state: present
+        - name: Configure new MySQL user called ocuser
+          mysql_user:
+            login_user: root
+            login_password: "{{ mysql_root_password }}"
+            user: ocuser
+            check_implicit_admin: true
+            password: "{{ mysql_root_password }}"
+            priv: 'ocuser.*:ALL'
+            host: '172.%'
+        - name: Grant permissions to ocuser
+          command: mysql -u root -p'{{ mysql_root_password }}' -h localhost -e "GRANT ALL ON *.* to 'ocuser'@'172.%';"
+

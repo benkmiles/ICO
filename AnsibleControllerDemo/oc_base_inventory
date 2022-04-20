@@ -1,0 +1,4 @@
+[all:vars]
+ansible_user=ansible
+ansible_ssh_private_key_file=/etc/ansible/remote-web.key
+ansible_sudo_pass=ansible
