@@ -1,4 +1,5 @@
 #!/bin/bash
+
 isappend=0
 while getopts g:s:o:a flag
 do
