@@ -2,3 +2,5 @@ ansible_network_os:ios
 ansible_connection:network_cli
 ansible_become:yes
 ansible_become_method:enable
+vlan_name:vlan10
+vlan_id:10
