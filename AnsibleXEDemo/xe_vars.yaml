@@ -1,3 +1,4 @@
 ---
-myvlan_name:vlan10
-myvlan_id:10
+
+myvlan_name: vlan10
+myvlan_id: 10
