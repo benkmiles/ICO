@@ -1,9 +1,9 @@
 ---
 - hosts: ios-xe
-  gather_facts: no
+  include_vars:
+    file: xe_vars.yaml
   tasks:
     - name: Merge provided configuration with device configuration
-      
       cisco.ios.ios_vlans:
         config:
         - name: Vlan_10
