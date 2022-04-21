@@ -1,9 +1,8 @@
 ---
 - hosts: ios-xe
+  vars_files:
+    - xe_vars.yaml
   tasks:
-    - name: Add XE Varaibles file
-      include_vars:
-        file: xe_vars.yaml
     - name: Merge provided configuration with device configuration
       cisco.ios.ios_vlans:
         config:
