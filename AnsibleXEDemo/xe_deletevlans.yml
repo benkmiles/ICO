@@ -1,0 +1,10 @@
+---
+
+- hosts: ios-xe
+  vars_files:
+    - xe_vars.yaml
+  tasks:
+    - name: Merge provided configuration with device configuration
+      cisco.ios.ios_command:
+          commands:
+          - no vlan {{ myvlan_id }}
