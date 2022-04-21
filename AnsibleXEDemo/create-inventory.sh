@@ -15,7 +15,7 @@ then
 	myoutfile=custom_inventory
 fi
 
-if $isappend == 1 then
+if ("$isappend" == "1") then
     echo "$groupname" >> "$myoutfile"
 else
     echo "$groupname" > "$myoutfile"
