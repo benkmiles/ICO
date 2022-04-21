@@ -2,7 +2,7 @@
 - hosts: ios-xe
   tasks:
     - name: Merge provided configuration with device configuration
-      gather_facts: false
+      gather_facts: no
       cisco.ios.ios_vlans:
         config:
         - name: Vlan_10
