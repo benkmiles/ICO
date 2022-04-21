@@ -7,5 +7,5 @@
     - name: Delete Vlan
       cisco.ios.ios_vlans:
         config:
-        - vlan_id: {{ myvlan_id }}
+        - vlan_id: "{{ myvlan_id }}"
         state: deleted
