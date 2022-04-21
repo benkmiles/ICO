@@ -1,10 +1,10 @@
+[iso-xe]
+172.16.50.26
+172.16.50.39
+
 [ios-xe:vars]
 ansible_network_os=ios
 ansible_connection=network_cli
-
-[iso-xe:children]
-172.16.50.26
-172.16.50.39
 
 [all:vars]
 username=admin
