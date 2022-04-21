@@ -11,4 +11,4 @@ ansible_become_method=enable
 [all:vars]
 ansible_user=admin
 ansible_ssh_pass=Password@123
-ansible_sudo_pass=Password@123
+ansible_become_password=Password@123
