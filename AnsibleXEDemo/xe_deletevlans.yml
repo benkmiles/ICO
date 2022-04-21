@@ -4,7 +4,7 @@
   vars_files:
     - xe_vars.yaml
   tasks:
-    - name: Merge provided configuration with device configuration
+    - name: Delete Vlan
       cisco.ios.ios_command:
           commands:
-          - no vlan {{ myvlan_id }}
+          - no vlan "{{ myvlan_id }}"
