@@ -5,6 +5,7 @@
     - xe_vars.yaml
   tasks:
     - name: Delete Vlan
-      cisco.ios.ios_command:
-          commands:
-          - no vlan "{{ myvlan_id }}"
+      cisco.ios.ios_vlans:
+        config:
+        - vlan_id: {{ myvlan_id }}
+        state: deleted
