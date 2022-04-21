@@ -7,8 +7,8 @@
     - name: Merge provided configuration with device configuration
       cisco.ios.ios_vlans:
         config:
-        - name: {{ myvlan_name }}
-          vlan_id: {{ myvlan_id }}
+        - name: "{{ myvlan_name }}"
+          vlan_id: "{{ myvlan_id }}"
           state: active
           shutdown: disabled
           remote_span: true
